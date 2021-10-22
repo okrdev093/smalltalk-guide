@@ -170,7 +170,7 @@ Transcript show: (sumador value:2);cr.
 Transcript show: (sumador value:30)
 ```
 
-El resultado en nuestro Transcript deberia ser
+El resultado en nuestro Transcript debería ser
 
     3
     31
@@ -184,3 +184,13 @@ En Smalltalk no existes estructuras tales como *if, while, while_true* que podem
  - ifTrue[ .....] ifFalse[.....]
 
 Todos estos mensajes van a ser comprendidos por instancias de las clases **False** e instancias de las clases **True** .
+
+#### Ejemplo ifTrue ifFalse
+
+```smalltalk
+Transcript clear.
+"Si es verdadero ejecuta el codigo y sino no hace nada"
+(1 > 2) ifTrue: [Transcript show: 'Es mayor'; cr].
+"Si es falso ejecuta el codigo y sino no hace nada"
+(1 < 2) ifTrue: [Transcript show: 'Es menor'; cr].
+```
