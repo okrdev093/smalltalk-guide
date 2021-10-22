@@ -122,3 +122,65 @@ La asignación de variables se hace con `:=` y la comparación con `=`
     "Imprimimos el contendio de la variable numero 2"
     Transcript show: numero2.
 ```
+
+#### Palabras Reservadas
+Existen solo 6 palabras reservadas en pharo , que no se pueden utilizar como nombres de variables.
+```smalltalk
+true
+false
+self
+super
+nil
+thisContext
+```
+
+#### Bloques de código 
+
+Todo lo que está entre corchetes `[ ]` es un bloque *closures*, estos encierran una o más sentencias de código y pueden ser asignados a una variable y ejecutados luego. También pueden recibir parámetros, son llamados muchas veces *métodos anónimos*
+
+#### Ejemplo 2 bloques de código
+
+```smalltalk
+| holaMundo |
+Transcript clear.
+"Asignamos a la variable holaMundo el bloque de codigo que esta entre []"
+holaMundo:= [ 
+Transcript show: 'hola'; cr.
+Transcript show: 2*5 ; cr
+].
+
+
+"Posteriormente en algun momento cualquiera podemos llamar a nuestra variable y ejecutar el bloque de codigo las veces que quisieramos enviando el mensaje value"
+holaMundo value.
+holaMundo value.
+```
+
+#### Ejemplo 2 bloques de código con parámetros
+Podemos enviar parámetros a los bloques de código de esta  manera
+```smalltalk
+| sumador |
+Transcript clear.
+"Asignamos a la variable sumador el bloque de codigo que esta entre [] "
+"para definir los parametros usamos :<nombre_del_parametro>"
+"luego usamos la pleca | y a continuacion nuestro codigo como hicimos en el ejemplo anterior"
+sumador:= [ :x | x+1].
+
+"Por ultimo llamamos a la variable que contiene el bloque de codigo  y le enviamos el argumento usando :"
+Transcript show: (sumador value:2);cr.
+Transcript show: (sumador value:30)
+```
+
+El resultado en nuestro Transcript deberia ser
+
+    3
+    31
+
+#### Estructuras de Control
+
+En Smalltalk no existes estructuras tales como *if, while, while_true* que podemos ver en en otros lenguajes, pero tenemos formas análogas de hacer esto mediante el envío  de mensajes que ya tenemos definidos a los objetos. Estos mensajes son:
+
+ - IfTrue[ ..... ]
+ - ifFalse[ .... ]
+ - ifTrue[ .....] ifFalse[.....]
+
+Todos estos mensajes van a ser comprendidos por instancias de las clases **False** e instancias de las clases **True** .
