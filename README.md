@@ -209,9 +209,9 @@ El resultado en nuestro Transcript debería ser
 
 En Smalltalk no existen estructuras tales como *if, while, while_true* que podemos ver en en otros lenguajes, pero tenemos formas análogas de hacer esto mediante el envío  de mensajes que ya tenemos definidos a los objetos. Estos mensajes son:
 
- - IfTrue[ ..... ]
- - ifFalse[ .... ]
- - ifTrue[ .....] ifFalse[.....]
+ - (condicion)IfTrue:[ ..... ]
+ - (condicion)ifFalse:[ .... ]
+ - (condicion)ifTrue:[ .....] ifFalse:[.....]
 
 Todos estos mensajes van a ser comprendidos por instancias de las clases **False** e instancias de las clases **True** .
 
@@ -223,6 +223,10 @@ Transcript clear.
 (1 > 2) ifTrue: [Transcript show: 'Es mayor'; cr].
 "Si es falso ejecuta el codigo y sino no hace nada"
 (1 < 2) ifTrue: [Transcript show: 'Es menor'; cr].
+```
+#### Ejemplo ifTrue  ifFalse (Else)
+```smalltalk
+(1 > 2)ifTrue:[Transcript show:'es verdadero'] ifFalse:[Transcript show:'Es Falso'].
 ```
 ### Mensajes de iteración
 
@@ -410,6 +414,25 @@ Transcript show: persona nombreCompleto.
 debemos ver en nuestro `Transcript` el mensaje 
 
     Pedro Perez
+
+#### Constructores en Smalltalk
+Los constructores nos sirven para definir el estado inicial de un objeto luego de enviar el mensaje `new`
+Supongamos que tenemos la clase `NumeroComplejo` e instanciamos un objeto de la misma:
+  
+```smalltalk
+"Constructores en pharo"
+|n|
+n:= NumeroComplejo new.
+```
+Para tener esa inicialización nos valemos del método **initialize** que se va ejecutar después de que el objeto se crea y nos permite inicializar los valores por defecto de los atributos del objeto 
+
+```smalltalk
+ "llamamos a super para darle chance a la clase base de que ejecute sus inicializaciones y luego inicializamos nuestros atributos"
+initialize
+	super.
+	parteReal:=0.
+	parteImaginaria:=0.
+```
 
 ### Colecciones en Smalltalk
 //en progreso
