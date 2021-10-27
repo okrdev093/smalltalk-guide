@@ -417,22 +417,37 @@ debemos ver en nuestro `Transcript` el mensaje
 
 #### Constructores en Smalltalk
 Los constructores nos sirven para definir el estado inicial de un objeto luego de enviar el mensaje `new`
-Supongamos que tenemos la clase `NumeroComplejo` e instanciamos un objeto de la misma:
-  
+Supongamos que tenemos la clase `NumeroComplejo`  y  tiene los atributos `parteReal y parteImaginaria`
+  ```mermaid
+ classDiagram
+    class NumeroComplejo{
+     -parteReal
+	 -ParteImaginaria }
+     
+  ```
+  Instanciamos un  objeto de la misma:
 ```smalltalk
 "Constructores en pharo"
 |n|
 n:= NumeroComplejo new.
 ```
-Para tener esa inicialización nos valemos del método **initialize** que se va ejecutar después de que el objeto se crea y nos permite inicializar los valores por defecto de los atributos del objeto 
+Al chequear el objeto que se creo veremos que los atributos se encuentran en `nil` en su estado inicial
+![constructores 1](https://i.imgur.com/Jyeqau2.png)
 
+Pero supongamos que queremos que al crear el objeto la parte real e imaginaria sean 0, entonces para  tener esa inicialización nos valemos del método **initialize** que se va ejecutar después de que el objeto se crea y nos permite inicializar los valores por defecto de los atributos del objeto.
+Dentro de nuestra clase creamos el metodo ** initialize**
 ```smalltalk
- "llamamos a super para darle chance a la clase base de que ejecute sus inicializaciones y luego inicializamos nuestros atributos"
-initialize
-	super.
-	parteReal:=0.
-	parteImaginaria:=0.
+"llamamos a super para darle chance a la clase base de que ejecute sus inicializaciones y luego inicializamos nuestros atributos"
+ initialize
+super.
+"hacemos nuestras inicializaciones "
+  parteReal:=0.
+  parteImaginaria:=0.
 ```
+
+ahora vemos que al crearse el objeto esta inicializado como queríamos
+
+![constructores 2](https://i.imgur.com/8QcWCAo.png)
 
 ### Colecciones en Smalltalk
 //en progreso
