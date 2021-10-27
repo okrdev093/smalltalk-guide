@@ -13,16 +13,11 @@ SMALLTALK es un lenguaje orientado a objetos puro, pues todas las entidades que 
 ####  Una nota importante
 Diseñar nuevas aplicaciones SMALLTALK, requiere de conocimientos sobre las clases existentes en el sistema SMALLTALK. Frecuentemente la programación en SMALLTALK se denomina "Programación por extensión" Las nuevas aplicaciones son construidas por extensión de las librerías de clases de SMALLTALK
 #### Estructura de un sistema smalltalk
-Un sistema smalltalk esta compuesto por  
+Un sistema smalltalk esta compuesto por  :
 
-IDE
-entorno de desarrollo
-LENGUAJE
-IMAGEN
-se encarga de guardar la copia de nuestros objetos 
-MAQUINA VIRTUAL
-se encarga de ejecutar el sistema
-
+ - IDE entorno de desarrollo 
+ - LENGUAJE IMAGEN se encarga de guardar la   copia de nuestros objetos
+ -   MAQUINA VIRTUAL se encarga de ejecutar el   sistema.
 
 #### Descarga e instalación de Pharo
 Para descargar y ejecutar Pharo nos dirigimos a https://pharo.org/ y entramos a la sección de descargas
@@ -72,7 +67,7 @@ Existen 3 tipos de mensajes
  - finalmente los de tipo keyword
  
 
-##### Hola mundo en SmallTalk
+##### Hola mundo en Smalltalk
 
     Transcript show: 'Hola mundo'.
     
@@ -100,36 +95,37 @@ La asignación de variables se hace con `:=` y la comparación con `=`
 	
 	
 ```smalltalk
- "ejemplo Asignacion"
-    numero1:=23.
-    "Ejemplo Comparacion"
-    numero1 = numero2.
+"Ejemplo Asignacion"
+ numero1:=23.
+
+"Ejemplo Comparacion"
+ numero1 = numero2.
 
 ```
 
 #### Ejemplo 1
   
 ```smalltalk
-	"Declaramos Variables"
-    |numero1 numero2|
+"Declaramos Variables"
+|numero1 numero2|
+   
+"Limpiamos la consola"
+Transcript clear.
     
-    "Limpiamos la consola"
-    Transcript clear.
+"Asignamos 11 a la variable numero1"
+ numero1:=11.
     
-    "Asignamos 11 a la variable numero1"
-    numero1:=11.
+"Imprimimos el contenido de la variable"
+Transcript show: numero1.
     
-    "Imprimimos el contenido de la variable"
-    Transcript show: numero1.
+"Imprimimos un salto de linea"
+ Transcript cr.
     
-    "Imprimimos un salto de linea"
-    Transcript cr.
+"Asignamos 34 a la variable numero2"
+ numero2:=34.
     
-    "Asignamos 34 a la variable numero2"
-    numero2:=34.
-    
-    "Imprimimos el contendio de la variable numero 2"
-    Transcript show: numero2.
+"Imprimimos el contendio de la variable numero 2"
+Transcript show: numero2.
 ```
 
 #### Palabras Reservadas
@@ -145,9 +141,34 @@ thisContext
 
 #### Bloques de código 
 
-Todo lo que está entre corchetes `[ ]` es un bloque *closures*, estos encierran una o más sentencias de código y pueden ser asignados a una variable y ejecutados luego. También pueden recibir parámetros, son llamados muchas veces *métodos anónimos*
+Todo lo que está entre corchetes `[ ]` es un bloque *closures*, estos encierran una o más sentencias de código y pueden ser asignados a una variable y ejecutados luego. También pueden recibir parámetros, son llamados muchas veces *métodos anónimos*.
+Como todo en Smalltalk los bloque de código también son objetos.
 
-#### Ejemplo 2 bloques de código
+Los bloques de código responden al mensaje `[] value` que se encarga de ejecutar el código dentro de bloque
+
+```smalltalk
+"Bloque de codigo simple sin argumentos"
+|numero1|
+numero1:=[ 3 + 3 ].
+Transcript show: numero1 value
+```
+
+también responden al mensaje `[:varname| code ] value:` el cual nos permite pasar argumentos a nuestro bloque
+
+```smalltalk
+"Bloque de codigo simple con 1 argumento"
+|numero1|
+numero1:=[ :x | x+5].
+Transcript show: (numero1 value: 5)
+```
+
+```smalltalk
+"Bloque de codigo simple con varios argumentos"
+|suma|
+suma:=[ :a :b | a+b].
+Transcript show: (suma value:5 value:9)
+```
+#### Ejemplo  bloques de código
 
 ```smalltalk
 | holaMundo |
@@ -181,8 +202,8 @@ Transcript show: (sumador value:30)
 
 El resultado en nuestro Transcript debería ser
 
-    3
-    31
+ 3
+ 31
 
 #### Estructuras de Control
 
@@ -203,7 +224,7 @@ Transcript clear.
 "Si es falso ejecuta el codigo y sino no hace nada"
 (1 < 2) ifTrue: [Transcript show: 'Es menor'; cr].
 ```
- ### Mensajes de iteración
+### Mensajes de iteración
 
  - timesRepeat: [ ... ]
  - [... ]whileTrue:[ ... ]
@@ -389,4 +410,20 @@ Transcript show: persona nombreCompleto.
 debemos ver en nuestro `Transcript` el mensaje 
 
     Pedro Perez
+
+### Colecciones en Smalltalk
+//en progreso
+### Exceptions
+//en progreso
+###  Pruebas  Automatizadas con SUnit
+//en progreso
+#### Pruebas Unitarias
+Son aquellas que verifican una pequeña funcionalidad de nuestro código, son pruebas que evalúan la funcionalidad de un objeto de manera aislada.
+Para poder estructurar una prueba unitaria la dividimos en 3 partes:
+
+ - **Arrange**: Se establecen todas las precondiciones necesarias, i.e. declarar variables, instanciar objeto etc.
+ - **Act**: Se envía el mensaje sobre el objeto que queremos testear.
+ - **Assert**: Se verifica  que el resultado de la prueba sea el esperado
+
+#### Pruebas Integración
 
