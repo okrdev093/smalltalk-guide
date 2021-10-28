@@ -382,16 +382,16 @@ Damos `ctrl+s` para guardar nuestro método
 de manera análoga definimos el método `apellido`
 
 ```smalltalk
-	apellido: unApellido
-		apellido := unApellido.
+apellido: unApellido
+ apellido := unApellido.
 ```
 
 por ultimo cliqueando nuevamente en la pestaña `+Inst side methods`definimos el método `nombreCompleto`
 
 ```smalltalk
 "definimos el nombre del metodo y retornamos una concatenacion del nombre y el apellido"
-	nombreCompleto
-		^ nombre , ' ', apellido .
+nombreCompleto
+	^ nombre , ' ', apellido .
 ```
 A diferencia de los otros métodos, este no recibe ningún parámetro y usamos el carácter `^` para indicar que vamos a retornar un valor, esto es muy similar a lo que en otros leguajes se conoce como `return` el objeto `,` nos permite concatenar el **nombre** y el **apellido**.
 
