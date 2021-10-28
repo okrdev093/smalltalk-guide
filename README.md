@@ -418,13 +418,8 @@ debemos ver en nuestro `Transcript` el mensaje
 #### Constructores en Smalltalk
 Los constructores nos sirven para definir el estado inicial de un objeto luego de enviar el mensaje `new`
 Supongamos que tenemos la clase `NumeroComplejo`  y  tiene los atributos `parteReal y parteImaginaria`
-  ```mermaid
- classDiagram
-    class NumeroComplejo{
-     -parteReal
-	 -ParteImaginaria }
-     
-  ```
+
+
   Instanciamos un  objeto de la misma:
 ```smalltalk
 "Constructores en pharo"
@@ -435,7 +430,7 @@ Al chequear el objeto que se creo veremos que los atributos se encuentran en `ni
 ![constructores 1](https://i.imgur.com/Jyeqau2.png)
 
 Pero supongamos que queremos que al crear el objeto la parte real e imaginaria sean 0, entonces para  tener esa inicialización nos valemos del método **initialize** que se va ejecutar después de que el objeto se crea y nos permite inicializar los valores por defecto de los atributos del objeto.
-Dentro de nuestra clase creamos el metodo ** initialize**
+Dentro de nuestra clase creamos el método ** initialize**
 ```smalltalk
 "llamamos a super para darle chance a la clase base de que ejecute sus inicializaciones y luego inicializamos nuestros atributos"
  initialize
@@ -450,7 +445,43 @@ ahora vemos que al crearse el objeto esta inicializado como queríamos
 ![constructores 2](https://i.imgur.com/8QcWCAo.png)
 
 ### Colecciones en Smalltalk
-//en progreso
+Un resumen 
+  
+```smalltalk
+"Colleciones de Objetos"
+|misNumeros subIndice tam exists elemento|
+
+"Instanciamos un objeto de la coleccion"
+misNumeros:= OrderedCollection new.
+"agregamos elementos"
+misNumeros add:9.
+misNumeros add:4.
+misNumeros add:5.
+misNumeros add:3.
+misNumeros add:1.
+misNumeros add:89.
+misNumeros add:12.
+
+"Nos devuelve el indice de un elemento dentro de la coleccion- el primero que encuentra"
+subIndice:= misNumeros indexOf:9. 
+
+"Tamaño de una coleccion"
+tam:= misNumeros size.
+
+"Accedemos a un elemento especifico de la coleccion"
+elemento:= misNumeros at:2.
+
+"Remueve el primer elemento de la coleccion y guarda la referencia en la variable"
+elemento := misNumeros removeFirst.
+
+"Remueve el ultimo elemento de la coleccion y guarda la referencia en la variable"
+elemento := misNumeros removeLast
+
+"Chequea si un elemento se encuentra en la collecion"
+exists:= misNumeros includes:anObject
+
+```
+
 ### Exceptions
 //en progreso
 ###  Pruebas  Automatizadas con SUnit
